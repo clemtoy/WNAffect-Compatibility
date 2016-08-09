@@ -76,7 +76,7 @@ class WNAffect:
         return None
     
     def get_affective_state(self, word, pos):
-        return get_emotion(word, pos).get_level(1).name
+        return self.get_emotion(word, pos).get_level(1).name
         
     def get_emotion_synset(self, offset):
         """Returns the emotion of the synset.
@@ -88,8 +88,8 @@ class WNAffect:
                 return self.synsets[pos][offset]
         return None
 
-    def get_affective_state(self, offset):
-        return get_emotion_synset(offset).get_level(1).name
+    def get_affective_state_from_synset(self, offset):
+        return self.get_emotion_synset(offset).get_level(1).name
         
 
 if __name__ == "__main__":
