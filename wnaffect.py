@@ -74,6 +74,13 @@ class WNAffect:
                 if offset in self.synsets[pos]:
                     return self.synsets[pos][offset]
         return None
+    
+    def get_affective_state(self, word, pos):
+    	emo = self.get_emotion(word, pos)
+    	if emo:
+    	        return emo.get_level(1).name
+    	else:
+    		return None
         
     def get_emotion_synset(self, offset):
         """Returns the emotion of the synset.
@@ -85,7 +92,13 @@ class WNAffect:
                 return self.synsets[pos][offset]
         return None
 
-
+    def get_affective_state_from_synset(offset):
+    	emo = self.get_emotion_synset(offset)
+    	if emo:	
+    	        return emo.get_level(1).name
+    	else:
+    		return None
+        
 
 if __name__ == "__main__":
     wordnet16, wndomains32, word, pos = sys.argv[1:5]
